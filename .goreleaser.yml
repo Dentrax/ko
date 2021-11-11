@@ -36,7 +36,9 @@ checksum:
   name_template: 'checksums.txt'
 signs:
   - cmd: cosign
-    args: ["sign-blob", "--oidc-issuer=https://token.actions.githubusercontent.com", "--output=${signature}", "${artifact}"]
+    certificate: "${artifact}.cert"
+    signature: "${artifact}.sig"
+    args: ["sign-blob", "--oidc-issuer=https://token.actions.githubusercontent.com", "--output-signature=${signature}", "--output-certificate=${certificate}",  "${artifact}"]
     artifacts: checksum
 snapshot:
   name_template: "{{ .Tag }}-next"
