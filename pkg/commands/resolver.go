@@ -122,6 +122,14 @@ func gobuildOptions(bo *options.BuildOptions) ([]build.Option, error) {
 		opts = append(opts, build.WithConfig(bo.BuildConfigs))
 	}
 
+	if bo.ImageConfigs != nil {
+		opts = append(opts, build.WithImageConfig(bo.ImageConfigs))
+	}
+
+	if bo.DefaultImageConfig != nil {
+		opts = append(opts, build.WithDefaultImageConfig(bo.DefaultImageConfig))
+	}
+
 	return opts, nil
 }
 
@@ -138,7 +146,7 @@ func makeBuilder(ctx context.Context, bo *options.BuildOptions) (*build.Caching,
 	if err != nil {
 		return nil, fmt.Errorf("error setting up builder options: %w", err)
 	}
-	innerBuilder, err := build.NewGobuilds(ctx, bo.WorkingDirectory, bo.BuildConfigs, opt...)
+	innerBuilder, err := build.NewGobuilds(ctx, bo.WorkingDirectory, bo.BuildConfigs, bo.ImageConfigs, opt...)
 	if err != nil {
 		return nil, err
 	}

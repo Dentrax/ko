@@ -79,6 +79,8 @@ type gobuild struct {
 	disableOptimizations bool
 	trimpath             bool
 	buildConfigs         map[string]Config
+	imageConfigs         map[string]ImageConfig
+	defaultImageConfig   *ImageConfig
 	platformMatcher      *platformMatcher
 	dir                  string
 	labels               map[string]string
@@ -100,6 +102,8 @@ type gobuildOpener struct {
 	disableOptimizations bool
 	trimpath             bool
 	buildConfigs         map[string]Config
+	imageConfigs         map[string]ImageConfig
+	defaultImageConfig   *ImageConfig
 	platforms            []string
 	labels               map[string]string
 	dir                  string
@@ -127,6 +131,7 @@ func (gbo *gobuildOpener) Open() (Interface, error) {
 		disableOptimizations: gbo.disableOptimizations,
 		trimpath:             gbo.trimpath,
 		buildConfigs:         gbo.buildConfigs,
+		imageConfigs:         gbo.imageConfigs,
 		labels:               gbo.labels,
 		dir:                  gbo.dir,
 		platformMatcher:      matcher,
@@ -794,6 +799,10 @@ func (g *gobuild) buildOne(ctx context.Context, refStr string, base v1.Image, pl
 		cfg.Config.Labels[k] = v
 	}
 
+	for k, v := range g.imageConfigs[ref.Path()].Labels {
+		cfg.Config.Labels[k] = v
+	}
+
 	empty := v1.Time{}
 	if g.creationTime != empty {
 		cfg.Created = g.creationTime
@@ -803,6 +812,8 @@ func (g *gobuild) buildOne(ctx context.Context, refStr string, base v1.Image, pl
 	if err != nil {
 		return nil, err
 	}
+
+	image = mutate.Annotations(image, g.imageConfigs[ref.Path()].Annotations).(v1.Image)
 
 	si := signed.Image(image)
 
