@@ -795,11 +795,20 @@ func (g *gobuild) buildOne(ctx context.Context, refStr string, base v1.Image, pl
 	if cfg.Config.Labels == nil {
 		cfg.Config.Labels = map[string]string{}
 	}
-	for k, v := range g.labels {
+
+	// initialize default image labels
+	if g.defaultImageConfig != nil {
+		for k, v := range g.defaultImageConfig.Labels {
+			cfg.Config.Labels[k] = v
+		}
+	}
+
+	// override the defaultImageConfig.labels
+	for k, v := range g.imageConfigs[ref.Path()].Labels {
 		cfg.Config.Labels[k] = v
 	}
 
-	for k, v := range g.imageConfigs[ref.Path()].Labels {
+	for k, v := range g.labels {
 		cfg.Config.Labels[k] = v
 	}
 
@@ -813,7 +822,17 @@ func (g *gobuild) buildOne(ctx context.Context, refStr string, base v1.Image, pl
 		return nil, err
 	}
 
-	image = mutate.Annotations(image, g.imageConfigs[ref.Path()].Annotations).(v1.Image)
+	annotations := map[string]string{}
+
+	if g.defaultImageConfig != nil {
+		annotations = g.defaultImageConfig.Annotations
+	}
+
+	for k, v := range g.imageConfigs[ref.Path()].Annotations {
+		annotations[k] = v
+	}
+
+	image = mutate.Annotations(image, annotations).(v1.Image)
 
 	si := signed.Image(image)
 
