@@ -79,7 +79,7 @@ github.com/golang/protobuf/ptypes
 github.com/golang/protobuf/ptypes/any
 github.com/golang/protobuf/ptypes/duration
 github.com/golang/protobuf/ptypes/timestamp
-# github.com/google/go-cmp v0.5.6
+# github.com/google/go-cmp v0.5.7
 ## explicit
 github.com/google/go-cmp/cmp
 github.com/google/go-cmp/cmp/cmpopts
@@ -141,15 +141,14 @@ github.com/klauspost/compress/huff0
 github.com/klauspost/compress/internal/snapref
 github.com/klauspost/compress/zstd
 github.com/klauspost/compress/zstd/internal/xxhash
-# github.com/magiconair/properties v1.8.5
+# github.com/magiconair/properties v1.8.6
 github.com/magiconair/properties
 # github.com/mattmoor/dep-notify v0.0.0-20190205035814-a45dec370a17
 ## explicit
 github.com/mattmoor/dep-notify/pkg/graph
-# github.com/mattn/go-isatty v0.0.13
-## explicit
+# github.com/mattn/go-isatty v0.0.14
 github.com/mattn/go-isatty
-# github.com/mitchellh/mapstructure v1.4.2
+# github.com/mitchellh/mapstructure v1.4.3
 github.com/mitchellh/mapstructure
 # github.com/opencontainers/go-digest v1.0.0
 github.com/opencontainers/go-digest
@@ -159,13 +158,18 @@ github.com/opencontainers/image-spec/specs-go
 github.com/opencontainers/image-spec/specs-go/v1
 # github.com/pelletier/go-toml v1.9.4
 github.com/pelletier/go-toml
+# github.com/pelletier/go-toml/v2 v2.0.0-beta.8
+github.com/pelletier/go-toml/v2
+github.com/pelletier/go-toml/v2/internal/ast
+github.com/pelletier/go-toml/v2/internal/danger
+github.com/pelletier/go-toml/v2/internal/tracker
 # github.com/pkg/errors v0.9.1
 github.com/pkg/errors
 # github.com/russross/blackfriday/v2 v2.1.0
 github.com/russross/blackfriday/v2
 # github.com/sirupsen/logrus v1.8.1
 github.com/sirupsen/logrus
-# github.com/spf13/afero v1.6.0
+# github.com/spf13/afero v1.8.2
 github.com/spf13/afero
 github.com/spf13/afero/mem
 # github.com/spf13/cast v1.4.1
@@ -179,11 +183,14 @@ github.com/spf13/jwalterweatherman
 # github.com/spf13/pflag v1.0.5
 ## explicit
 github.com/spf13/pflag
-# github.com/spf13/viper v1.9.0
+# github.com/spf13/viper v1.11.0
 ## explicit
 github.com/spf13/viper
 github.com/spf13/viper/internal/encoding
+github.com/spf13/viper/internal/encoding/dotenv
 github.com/spf13/viper/internal/encoding/hcl
+github.com/spf13/viper/internal/encoding/ini
+github.com/spf13/viper/internal/encoding/javaproperties
 github.com/spf13/viper/internal/encoding/json
 github.com/spf13/viper/internal/encoding/toml
 github.com/spf13/viper/internal/encoding/yaml
@@ -193,22 +200,19 @@ github.com/subosito/gotenv
 github.com/vbatts/tar-split/archive/tar
 # golang.org/x/mod v0.4.2
 golang.org/x/mod/semver
-# golang.org/x/net v0.0.0-20211007125505-59d4e928ea9d
-## explicit
+# golang.org/x/net v0.0.0-20220412020605-290c469a71a5
 golang.org/x/net/internal/socks
 golang.org/x/net/proxy
 # golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 ## explicit
 golang.org/x/sync/errgroup
 golang.org/x/sync/semaphore
-# golang.org/x/sys v0.0.0-20211007075335-d3039528d8ac
-## explicit
+# golang.org/x/sys v0.0.0-20220412211240-33da011f77ad
 golang.org/x/sys/execabs
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 # golang.org/x/text v0.3.7
-## explicit
 golang.org/x/text/transform
 golang.org/x/text/unicode/norm
 # golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac
@@ -227,18 +231,16 @@ golang.org/x/tools/internal/gocommand
 golang.org/x/tools/internal/packagesinternal
 golang.org/x/tools/internal/typeparams
 golang.org/x/tools/internal/typesinternal
-# golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+# golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f
 golang.org/x/xerrors
 golang.org/x/xerrors/internal
-# google.golang.org/genproto v0.0.0-20211005153810-c76a74d43a8e
-## explicit
+# google.golang.org/genproto v0.0.0-20220407144326-9054f6ed7bac
 google.golang.org/genproto/googleapis/rpc/status
-# google.golang.org/grpc v1.41.0
-## explicit
+# google.golang.org/grpc v1.45.0
 google.golang.org/grpc/codes
 google.golang.org/grpc/internal/status
 google.golang.org/grpc/status
-# google.golang.org/protobuf v1.27.1
+# google.golang.org/protobuf v1.28.0
 google.golang.org/protobuf/encoding/prototext
 google.golang.org/protobuf/encoding/protowire
 google.golang.org/protobuf/internal/descfmt
@@ -271,7 +273,7 @@ google.golang.org/protobuf/types/known/durationpb
 google.golang.org/protobuf/types/known/timestamppb
 # gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b
 ## explicit
-# gopkg.in/ini.v1 v1.63.2
+# gopkg.in/ini.v1 v1.66.4
 gopkg.in/ini.v1
 # gopkg.in/yaml.v2 v2.4.0
 gopkg.in/yaml.v2
