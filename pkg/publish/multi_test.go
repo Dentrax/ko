@@ -49,7 +49,7 @@ func TestMulti(t *testing.T) {
 	}
 	defer os.RemoveAll(tmp)
 
-	lp, err := publish.NewLayout(tmp)
+	lp, err := publish.NewLayout(tmp, nil)
 	if err != nil {
 		t.Errorf("NewLayout() = %v", err)
 	}
